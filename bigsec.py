@@ -317,4 +317,4 @@ if __name__ == '__main__':
     # Open URL IN WEB BROWSER
     time.sleep(5)
     url = "https://github.com/Anonymous3017"
-    # open_url(url)
+    open_url(url)
