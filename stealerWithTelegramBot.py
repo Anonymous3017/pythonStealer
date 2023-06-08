@@ -1,4 +1,3 @@
-# SHHH! XIT WAS HERE
 import requests
 import subprocess
 import platform
