@@ -1,4 +1,3 @@
-# SHHH! XIT WAS HERE
 import subprocess
 import platform
 import psutil
