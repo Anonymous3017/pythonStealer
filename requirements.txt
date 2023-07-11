@@ -1,0 +1,9 @@
+psutil
+pyautogui
+opencv-python
+pyperclip
+pyaudio
+pycryptodomex
+pywin32
+requests
+wave
